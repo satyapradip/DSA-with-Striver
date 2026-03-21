@@ -16,7 +16,7 @@ def longest_subarray(arr, k):
             maxLen = max(maxLen, right - left + 1) #update the maximum length of the subarray
         right += 1
         if right < n:  #check if the right is less than the length of the array
-            sum += arr[right] #add the right element to the sum
+            sum += arr[right] # add the right element to the sum
 
     return maxLen #return the maximum length of the subarray
 

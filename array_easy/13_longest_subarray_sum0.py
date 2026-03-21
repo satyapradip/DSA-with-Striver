@@ -9,7 +9,7 @@ def longest_subarray_with_sum0(arr, k):
         if sum in prefixSum: #check if the sum is in the prefix sum map
             maxLen = max(maxLen, i - prefixSum[sum]) #update the maximum length of the subarray if the sum is in the prefix sum map
         else:
-            prefixSum[sum] = i #add the sum to the prefix sum map
+            prefixSum[sum] = i # add the sum to the prefix sum map
     return maxLen #return the maximum length of the subarray
 
 if __name__ == "__main__":
