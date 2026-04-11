@@ -33,6 +33,9 @@ def majority_Element2(nums):
             candidate1, count1 = num, 1
         elif count2 == 0:
             candidate2, count2 = num, 1
+        else:
+            count1 -= 1
+            count2 -= 1
 
     # Step 2: Verify the candidates
     count1, count2 = 0, 0
