@@ -17,6 +17,7 @@ def smallest_divisor(nums, threshold):
 
 # Second Solution - Using math.ceil to calculate the sum of the divisions
 import math
+
 def smallest_divisor(nums, threshold):
   left, right = 1, max(nums)
   
@@ -33,6 +34,7 @@ def smallest_divisor(nums, threshold):
 
 
 # Third Solution - Using a helper function to calculate the sum of the divisions
+from typing import List
 class Solution:
     def smallestDivisor(self, nums: List[int], threshold: int) -> int:
         n=len(nums)
