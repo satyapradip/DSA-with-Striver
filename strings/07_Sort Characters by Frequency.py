@@ -74,3 +74,19 @@ def frequency_sort(s):
 
 # Time complexity: O(n log n) where n is the number of unique characters in the string. Heap operations take O(log n) time.
 # Space complexity: O(n) for the hash map and the result string.
+
+#  Approach 4 : Use the Counter class from the collections module to count the occurrences of each character in the string, and then use the most_common() method to sort the characters based on their frequency.
+from collections import Counter
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+
+        # Counter builds the freq map in one line
+        freq = Counter(s)
+
+        # most_common() returns chars sorted by freq, highest first
+        # [('e',2), ('t',1), ('r',1)]
+        sorted_chars = freq.most_common()
+
+        # Reconstruct: repeat each char by its count, join everything
+        return "".join(char * count for char, count in sorted_chars)
