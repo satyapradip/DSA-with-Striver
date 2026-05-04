@@ -26,10 +26,12 @@ def roman_to_integer(s):
   for i in range(len(s)):
     current = roman_numerals[s[i]]
 
-    if i + 1 < len(s) and current < roman_numerals[s[i + 1]]:
-      total -= current
-    else:
-      total += current
+    if i + 1 < len(s):
+      next = roman_numerals[s[i + 1]]
+      if current < next:
+        total -= current
+      else:
+        total += current
   
   return total
 
