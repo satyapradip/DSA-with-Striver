@@ -23,7 +23,7 @@ def deleteAtSpecificPosition(head, position):
       # If we reach None before finishing the loop, the position is greater than the list length
       print("Position out of bounds!")
       return head
-    current = current.next
+    current = current.next 
 
   # Edge Case 3: If current is None after the loop, position is out of bounds
   if current is None or current.next is None:
@@ -35,3 +35,29 @@ def deleteAtSpecificPosition(head, position):
   current.next = current.next.next 
 
   return head # Return the (possibly unchanged) head of the list
+
+
+def printList(head):
+  current = head
+  while current is not None:
+    print(current.data, end="")
+    if current.next is not None:
+      print("->", end="")
+    current = current.next
+  print()
+
+if __name__ == "__main__":
+  # Create a linked list: 10 -> 20 -> 30 -> 40
+  head = Node(10)
+  head.next = Node(20)
+  head.next.next = Node(30)
+  head.next.next.next = Node(40)
+
+  print("Original List:")
+  printList(head)
+
+  # Delete node at position 2 (0-indexed, which is the node with value 30)
+  head = deleteAtSpecificPosition(head, 2)
+
+  print("List after deleting node at position 2:")
+  printList(head)
