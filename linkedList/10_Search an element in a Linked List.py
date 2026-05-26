@@ -13,6 +13,13 @@ def searchElement(head, target):
 
     return False
 
+# def serchElementRecursive(head, target):
+#     if head is None:
+#         return False
+#     if head.data == target:
+#         return True
+#     return searchElementRecursive(head.next, target)
+
 if "__main__" == __name__:
     head = Node(10)
     head.next = Node(20)
