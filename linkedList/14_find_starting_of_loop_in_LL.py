@@ -30,6 +30,17 @@ def find_start_of_loop(head):
         
     return slow  # Both pointers meet at the start of the loop\
 
+def detect_cycle2(head):
+    current = head
+    seen = set()
+    while current:
+        if current in seen:
+            return True
+        seen.add(current)
+        current = current.next
+
+    return None
+
 if __name__ == "__main__":
     # Create a linked list: 1 -> 2 -> 3 -> 4 -> 5
     head = Node(1)
