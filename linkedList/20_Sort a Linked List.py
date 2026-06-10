@@ -30,7 +30,7 @@ def sortLinkedList(head):
     # Merge two sorted linked lists
     def merge(left, right):
         dummy = Node(0) # Dummy node to help with merging
-        tail = dummy # Tail pointer to build the merged list
+        tail = dummy # Tail pointer to build the merged list21
         while left and right:
             if left.data < right.data:
                 tail.next = left
