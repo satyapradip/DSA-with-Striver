@@ -165,10 +165,16 @@ def union(arr1, arr2):
             val, j = arr2[j], j + 1
         else:
             val, i, j = arr1[i], i + 1, j + 1   # equal → take once, advance both
-        if not out or out[-1] != out and False:  # (dedup below)
-            pass
-    # simpler dedup guard used in the file:
-    #   if not union or union[-1] != val: union.append(val)
+        if not out or out[-1] != val:           # skip duplicates
+            out.append(val)
+    while i < len(arr1):                        # drain arr1's tail
+        if not out or out[-1] != arr1[i]:
+            out.append(arr1[i])
+        i += 1
+    while j < len(arr2):                        # drain arr2's tail
+        if not out or out[-1] != arr2[j]:
+            out.append(arr2[j])
+        j += 1
     return out
 ```
 
@@ -198,5 +204,116 @@ def longest_subarray_sum_k(arr, k):
 
 ---
 
-<!-- NEXT -->
+## 📝 30-Day Practice Schedule
+
+| Day | Topic | Problem Set |
+|---|---|---|
+| 1 | Array basics | Run `01_largest_element.py`, rewrite from memory |
+| 2 | Second largest | Run `02_second_largest_element.py`, GFG Second Largest |
+| 3 | Sorted check | Run `03` + `04`, count drops on paper |
+| 4 | Rotate array | Run `05_rotate_left_by_k.py`, LeetCode 189 |
+| 5 | Move zeros | Run `06_move_zeros_to_end.py`, LeetCode 283 ⭐ |
+| 6 | Linear search | Run `07_linear_search.py`, GFG Linear Search |
+| 7 | Review week 1 | Re-run files 01–07 WITHOUT looking at the code |
+| 8 | Union of sorted arrays | Run `08_union_of_two_sorted_arr.py`, GFG Union |
+| 9 | Missing number | Run `09_find_missing_number.py`, LeetCode 268 |
+| 10 | Max consecutive ones | Run `10_most_consecutive_ones.py`, LeetCode 485 |
+| 11 | Single number (XOR) | Run `11_single_number.py`, LeetCode 136 |
+| 12 | Sliding window | Run `12_longest_subarray.py`, GFG Longest Subarray Sum K |
+| 13 | Prefix sum + hashmap | Run `13_longest_subarray_sum0.py`, GFG Longest Subarray 0 Sum |
+| 14 | Review week 2 | Solve LeetCode 283 + 136 from complete memory |
+| 15 | Hashing intro | Two Sum (1) |
+| 16 | Greedy single pass | Best Time to Buy and Sell Stock (121) |
+| 17 | Count with a hash map | Majority Element (169) |
+| 18 | Two pointers | Remove Duplicates from Sorted Array (26) |
+| 19 | Two pointers backwards | Merge Sorted Array (88) |
+| 20 | Sets | Intersection of Two Arrays (349) |
+| 21 | Review week 3 | Re-solve all Level 1 problems |
+| 22 | Sorted + two pointers | Squares of a Sorted Array (977) |
+| 23 | Edge-case hunting | Valid Mountain Array (941) |
+| 24 | Running max/min | Third Maximum Number (414) |
+| 25 | Subarray classic ⭐ | Maximum Subarray (53) — preview of array_medium |
+| 26 | Rearrangement | Rearrange Array Elements by Sign (2149) |
+| 27 | Hash map + window | Contains Duplicate II (219) |
+| 28 | Review week 4 | Re-solve all Level 2 problems |
+| 29 | Mock interview | 45-min session, 2 problems |
+| 30 | MOCK INTERVIEW DAY | 3 problems — full simulation |
+
+---
+
+## 💡 Advice From a Mentor
+
+1. **Don't just read** — write every solution by hand, from an empty file
+2. **Draw boxes with indices** — label `0` and `n-1`; most array bugs are off-by-one
+3. **Dry run on paper** — walk `i`, `j`, `left`, `right` one row at a time
+4. **Explain out loud** — the "rubber duck" method works!
+5. **Spaced repetition** — redo problems at Day 7, 14, 21, 30
+6. **Patterns > Memorization** — learn to RECOGNIZE "write pointer", "merge", and
+   "prefix lookup" moments in a problem statement
+7. **Know your costs** — most array problems are O(n) time; aim for O(1) extra
+   space unless a hash map clearly buys you the O(n²) → O(n) jump
+8. **Ask "are there negatives?"** — that one question decides sliding window vs
+   prefix sum + hashmap, the #1 array interview trap. (Also: Python `list` is a
+   DYNAMIC array — `append` is amortized O(1), but `pop(0)` is O(n); that's what
+   `collections.deque` fixes — see the Queue module!)
+
+---
+
+## 🔗 LeetCode / GFG Problem Links (Copy into browser)
+
+**LeetCode:**
+- Move Zeroes: https://leetcode.com/problems/move-zeroes/
+- Rotate Array: https://leetcode.com/problems/rotate-array/
+- Check if Array Is Sorted and Rotated: https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
+- Missing Number: https://leetcode.com/problems/missing-number/
+- Max Consecutive Ones: https://leetcode.com/problems/max-consecutive-ones/
+- Single Number: https://leetcode.com/problems/single-number/
+- Two Sum: https://leetcode.com/problems/two-sum/
+- Best Time to Buy and Sell Stock: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+- Majority Element: https://leetcode.com/problems/majority-element/
+- Remove Duplicates from Sorted Array: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- Merge Sorted Array: https://leetcode.com/problems/merge-sorted-array/
+- Intersection of Two Arrays: https://leetcode.com/problems/intersection-of-two-arrays/
+- Squares of a Sorted Array: https://leetcode.com/problems/squares-of-a-sorted-array/
+- Valid Mountain Array: https://leetcode.com/problems/valid-mountain-array/
+- Third Maximum Number: https://leetcode.com/problems/third-maximum-number/
+- Maximum Subarray: https://leetcode.com/problems/maximum-subarray/
+- Rearrange Array Elements by Sign: https://leetcode.com/problems/rearrange-array-elements-by-sign/
+- Contains Duplicate II: https://leetcode.com/problems/contains-duplicate-ii/
+
+**GeeksforGeeks:**
+- Largest in Array (practice): https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1
+- Second Largest Element in an Array: https://www.geeksforgeeks.org/dsa/find-second-largest-element-array/
+- Check if an Array is Sorted: https://www.geeksforgeeks.org/dsa/program-check-array-sorted-not-iterative-recursive/
+- Check if an Array is Sorted and Rotated: https://www.geeksforgeeks.org/dsa/check-if-an-array-is-sorted-and-rotated/
+- Linear Search: https://www.geeksforgeeks.org/dsa/linear-search/
+- Union of Two Sorted Arrays: https://www.geeksforgeeks.org/dsa/union-of-two-sorted-arrays/
+- Longest Subarray With Sum K: https://www.geeksforgeeks.org/dsa/longest-sub-array-sum-k/
+- Longest Subarray with 0 Sum: https://www.geeksforgeeks.org/dsa/find-the-largest-subarray-with-0-sum/
+
+---
+
+## ✅ Final Checklist Before Moving to Array (Medium)
+
+- [ ] Can find largest & second largest in one pass from memory
+- [ ] Can check "sorted" and "sorted & rotated" from memory
+- [ ] Can rotate an array by k from memory (including `k > n`)
+- [ ] Solved Move Zeroes (283) 3 times independently
+- [ ] Can code the two-pointer union of sorted arrays without hints
+- [ ] Can derive the Gauss sum formula and explain the XOR trick
+- [ ] Solved Missing Number (268) without help
+- [ ] Solved Single Number (136) without help
+- [ ] Can code the sliding window template for sum = k (non-negative numbers)
+- [ ] Can explain WHY sliding window fails with negatives → prefix sum + hashmap
+- [ ] Can code the prefix sum + hashmap template from memory
+- [ ] Built intuition for: "two pointers for order, hashing for lookup, window for
+      contiguous non-negative sums"
+- [ ] Solved at least 20 array problems total
+
+> When you finish this roadmap, `array_medium` and `array_hard` will feel far
+> less scary — traversal, two pointers, sliding window, and prefix sum are the
+> backbone of almost every array interview problem. Next stop: Array (Medium).
+> Good luck — you've got this! 🚀
+
+
 
