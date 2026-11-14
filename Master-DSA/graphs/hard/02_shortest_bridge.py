@@ -16,6 +16,7 @@ def shortest_bridge(grid):
     2. Record all cells of the first island
     3. BFS from the first island's cells, expanding into water cells
     4. When hitting a cell with 1 (second island, not in first island), return the distance
+    Returns -1 if there's only one island or no second island.
     """
     if not grid or not grid[0]:
         return 0
@@ -77,6 +78,8 @@ def shortest_bridge(grid):
                     visited.add((nr, nc))
                     queue.append((nr, nc, dist + 1))
 
+    # No second island found
+    return -1
     return -1
 
 
@@ -101,19 +104,20 @@ if __name__ == "__main__":
                 [0, 0, 0],
                 [0, 0, 1]
             ]
-            # Two islands at opposite corners
-            # Path: (0,1) -> (1,1) -> (2,2), flip (1,1) only = 1 flip
+            # Two islands at (0,1) and (2,2)
+            # Path: (0,1) -> (1,1) -> (2,1) -> (2,2), flip (1,1) and (2,1) = 2 flips
             result = shortest_bridge(grid)
-            self.assertEqual(result, 1)
+            self.assertEqual(result, 2)
 
         def test_adjacent_islands(self):
             grid = [
                 [1, 1],
                 [0, 1]
             ]
-            # One island, no second island
+            # One island only: (0,0)-(0,1)-(1,1) are all connected
+            # No second island exists
             result = shortest_bridge(grid)
-            self.assertEqual(result, 0)
+            self.assertEqual(result, -1)
 
     # Demo
     demo = [

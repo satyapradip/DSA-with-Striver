@@ -107,7 +107,10 @@ if __name__ == "__main__":
 
         def test_dfs_iterative(self):
             result = dfs_iterative(self.graph, 'A')
-            self.assertEqual(result, ['A', 'C', 'F', 'E', 'B', 'D'])
+            # Both recursive and iterative should produce the same order
+            # Recursive: ['A', 'B', 'D', 'E', 'F', 'C']
+            # Iterative with reversed() gives the same order
+            self.assertEqual(result, ['A', 'B', 'D', 'E', 'F', 'C'])
 
         def test_dfs_paths(self):
             paths = dfs_paths_recursive(self.graph, 'A', 'F')
